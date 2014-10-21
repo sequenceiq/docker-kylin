@@ -95,9 +95,11 @@ echo "retrieving classpath..."
 cd $KYLIN_HOME/job/target
 JOB_JAR_NAME="kylin-job-latest.jar"
 #generate the variables: KYLIN_LD_LIBRARY_PATH,KYLIN_HBASE_CLASSPATH,KYLIN_HBASE_CONF_PATH
-#hbase org.apache.hadoop.util.RunJar $JOB_JAR_NAME com.kylinolap.job.deployment.HbaseConfigPrinter > /tmp/kylin_retrieve.sh
+hbase org.apache.hadoop.util.RunJar $JOB_JAR_NAME com.kylinolap.job.deployment.HbaseConfigPrinter /tmp/kylin_retrieve.sh
 #load variables: KYLIN_LD_LIBRARY_PATH,KYLIN_HBASE_CLASSPATH,KYLIN_HBASE_CONF_PATH
-#source /tmp/kylin_retrieve.sh
+source /tmp/kylin_retrieve.sh
+
+
 
 cd $KYLIN_HOME
 mkdir -p /etc/kylin
@@ -121,10 +123,10 @@ NEW_CHECK_URL="kylin.job.yarn.app.rest.check.status.url=http://localhost"
 KYLIN_ZOOKEEPER_URL=${KYLIN_ZOOKEEPER_QUORUM}:${KYLIN_ZOOKEEPER_CLIENT_PORT}:${KYLIN_ZOOKEEPER_ZNODE_PARENT}
 
 #deploy kylin.properties to /etc/kylin
-echo "Running on a sequenceiq sandbox"
+echo "Running on a SequenceIQ sandbox"
 cat examples/test_case_data/kylin.properties | \
-sed -e "s,${CHECK_URL_DEFAULT},${NEW_CHECK_URL}," | \
 sed -e "s,${CLI_HOSTNAME_DEFAULT},${NEW_CLI_HOSTNAME_PREFIX}${HOSTNAME}," | \
+sed -e "s,${CLI_USERNAME_DEFAULT},${NEW_CLI_USERNAME_PREFIX}," | \
 sed -e "s,${CLI_PASSWORD_DEFAULT},${NEW_CLI_PASSWORD_PREFIX}," | \
 sed -e "s,${METADATA_URL_DEFAULT},${NEW_METADATA_URL_PREFIX}${KYLIN_ZOOKEEPER_URL}," | \
 sed -e "s,${STORAGE_URL_DEFAULT},${NEW_STORAGE_URL_PREFIX}${KYLIN_ZOOKEEPER_URL}," >  /etc/kylin/kylin.properties
@@ -140,6 +142,7 @@ echo ""
 cd $KYLIN_HOME
 #mvn test -Dtest=com.kylinolap.job.SampleCubeSetupTest -DfailIfNoTests=false
 
+${CATALINA_HOME}/bin/shutdown.sh || true # avoid trapping
 cd $KYLIN_HOME/server/target
 WAR_NAME="kylin.war"
 rm -f $CATALINA_HOME/webapps/$WAR_NAME
