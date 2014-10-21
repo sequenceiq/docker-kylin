@@ -11,16 +11,13 @@ debug() {
 }
 
 get-server-state() {
-  curl \
-    --connect-timeout 2 \
-    -H 'Accept: text/plain' \
-    $KYLIN_HOST:9080 \
-    2>/dev/null
+  curl -s -o /dev/null -w "%{http_code}" $AMBARISERVER_PORT_9080_TCP_ADDR:9080
 }
 
-debug waits for kylin server: $KYLIN_HOST RUNNING ...
-while ! get-server-state | grep RUNNING &>/dev/null ; do
+debug waits for kylin to start on: $KYLIN_HOST
+while ! get-server-state | grep 200 &>/dev/null ; do
   [ $DEBUG -gt 0 ] && echo -n .
   sleep $SLEEP
 done
 [ $DEBUG -gt 0 ] && echo
+debug kylin web started: $KYLIN_HOST:9080
