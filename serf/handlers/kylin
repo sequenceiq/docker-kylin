@@ -1,4 +1,4 @@
 #!/bin/bash
 
 echo run kylin deploy script
-nohup /usr/local/kylin/deploy.sh &
+nohup /usr/local/kylin/deploy.sh > /var/log/kylin-deploy.log

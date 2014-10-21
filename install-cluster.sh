@@ -11,5 +11,3 @@ clear
 
 SERF_RPC_ADDR=${AMBARISERVER_PORT_7373_TCP##*/}
 serf event --rpc-addr=$SERF_RPC_ADDR kylin
-
-./wait-for-kylin.sh
