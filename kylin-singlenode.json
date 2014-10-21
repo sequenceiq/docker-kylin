@@ -1,0 +1,78 @@
+{
+  "host_groups": [
+    {
+      "name": "master",
+      "components": [
+        {
+          "name": "HISTORYSERVER"
+        },
+        {
+          "name": "HBASE_REGIONSERVER"
+        },
+        {
+          "name": "HBASE_CLIENT"
+        },
+        {
+          "name": "NAMENODE"
+        },
+        {
+          "name": "AMBARI_SERVER"
+        },
+        {
+          "name": "HDFS_CLIENT"
+        },
+        {
+          "name": "HIVE_CLIENT"
+        },
+        {
+          "name": "NODEMANAGER"
+        },
+        {
+          "name": "DATANODE"
+        },
+        {
+          "name": "RESOURCEMANAGER"
+        },
+        {
+          "name": "ZOOKEEPER_SERVER"
+        },
+        {
+          "name": "ZOOKEEPER_CLIENT"
+        },
+        {
+          "name": "HBASE_MASTER"
+        },
+        {
+          "name": "HIVE_SERVER"
+        },
+        {
+          "name": "SECONDARY_NAMENODE"
+        },
+        {
+          "name": "HIVE_METASTORE"
+        },
+        {
+          "name": "GANGLIA_SERVER"
+        },
+        {
+          "name": "YARN_CLIENT"
+        },
+        {
+          "name": "MAPREDUCE2_CLIENT"
+        },
+        {
+          "name": "MYSQL_SERVER"
+        },
+        {
+          "name": "GANGLIA_MONITOR"
+        }
+      ],
+      "cardinality": "1"
+    }
+  ],
+  "Blueprints": {
+    "blueprint_name": "hdp-singlenode-kylin",
+    "stack_name": "HDP",
+    "stack_version": "2.1"
+  }
+}
