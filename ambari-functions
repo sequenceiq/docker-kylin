@@ -1,17 +1,9 @@
-:<<USAGE
-########################################
-curl -Lo .amb j.mp/docker-ambari && . .amb
-########################################
-
-full documentation: https://github.com/sequenceiq/docker-ambari
-USAGE
-
 : ${NODE_PREFIX=amb}
 : ${AMBARI_SERVER_NAME:=${NODE_PREFIX}0}
 : ${MYDOMAIN:=mycorp.kom}
-: ${IMAGE:="sequenceiq/kylin-single"}
+: ${IMAGE:="sequenceiq/kylin:single"}
 : ${DOCKER_OPTS:="--dns 127.0.0.1 --entrypoint /usr/local/serf/bin/start-serf-agent.sh -e KEYCHAIN=$KEYCHAIN"}
-: ${CLUSTER_SIZE:=3}
+: ${CLUSTER_SIZE:=1}
 : ${DEBUG:=1}
 : ${SLEEP_TIME:=2}
 : ${DRY_RUN:=false}
@@ -92,6 +84,10 @@ _amb_run_shell() {
 
 amb-shell() {
   _amb_run_shell /tmp/ambari-shell.sh
+}
+
+kylin-deploy-single() {
+  amb-deploy-cluster 1
 }
 
 amb-deploy-cluster() {
