@@ -97,7 +97,7 @@ amb-deploy-cluster() {
   if [ $# -gt 1 ]; then
     BLUEPRINT=$2
   else
-    [ $act_cluster_size -gt 1 ] && BLUEPRINT=multi-node-hdfs-yarn || BLUEPRINT=single-node-hdfs-yarn
+    [ $act_cluster_size -gt 1 ] && BLUEPRINT=multi-node-hdfs-yarn || BLUEPRINT=hdp-singlenode-kylin
   fi
 
   : ${BLUEPRINT:?" required (single-node-hdfs-yarn / multi-node-hdfs-yarn / hdp-singlenode-default / hdp-multinode-default)"}
