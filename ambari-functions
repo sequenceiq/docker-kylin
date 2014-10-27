@@ -1,7 +1,7 @@
 : ${NODE_PREFIX=amb}
 : ${AMBARI_SERVER_NAME:=${NODE_PREFIX}0}
 : ${MYDOMAIN:=mycorp.kom}
-: ${IMAGE:="sequenceiq/kylin:single"}
+: ${IMAGE:="sequenceiq/kylin"}
 : ${DOCKER_OPTS:="--dns 127.0.0.1 --entrypoint /usr/local/serf/bin/start-serf-agent.sh -e KEYCHAIN=$KEYCHAIN"}
 : ${CLUSTER_SIZE:=1}
 : ${DEBUG:=1}
@@ -86,21 +86,17 @@ amb-shell() {
   _amb_run_shell /tmp/ambari-shell.sh
 }
 
-kylin-deploy-single() {
-  amb-deploy-cluster 1
-}
-
-amb-deploy-cluster() {
+kylin-deploy-cluster() {
   local act_cluster_size=$1
   : ${act_cluster_size:=$CLUSTER_SIZE}
 
   if [ $# -gt 1 ]; then
     BLUEPRINT=$2
   else
-    [ $act_cluster_size -gt 1 ] && BLUEPRINT=multi-node-hdfs-yarn || BLUEPRINT=hdp-singlenode-kylin
+    [ $act_cluster_size -gt 1 ] && BLUEPRINT=hdp-multinode-kylin || BLUEPRINT=hdp-singlenode-kylin
   fi
 
-  : ${BLUEPRINT:?" required (single-node-hdfs-yarn / multi-node-hdfs-yarn / hdp-singlenode-default / hdp-multinode-default)"}
+  : ${BLUEPRINT:?" required (hdp-singlenode-kylin / hdp-multinode-kylin)"}
 
   amb-start-cluster $act_cluster_size
   _amb_run_shell /tmp/install-cluster.sh

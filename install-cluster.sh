@@ -2,6 +2,7 @@
 
 ./ambari-shell.sh << EOF
 blueprint add --file /tmp/kylin-singlenode.json
+blueprint add --file /tmp/kylin-multinode.json
 cluster build --blueprint $BLUEPRINT
 cluster autoAssign
 cluster create --exitOnFinish true

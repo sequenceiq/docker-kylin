@@ -20,6 +20,7 @@ ADD serf /usr/local/serf
 
 ADD install-cluster.sh /tmp/
 ADD kylin-singlenode.json /tmp/
+ADD kylin-multinode.json /tmp/
 ADD wait-for-kylin.sh /tmp/
 ADD deploy.sh /usr/local/kylin/deploy.sh
 
