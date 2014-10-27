@@ -1,4 +1,7 @@
 #!/bin/bash
 
-echo run kylin deploy script
-nohup /usr/local/kylin/deploy.sh > /var/log/kylin-deploy.log
+# install kylin on the Ambari server instance
+if [[ "$SERF_TAG_AMBARI_SERVER" == "true" ]] ;then
+  echo run kylin deploy script
+  nohup /usr/local/kylin/deploy.sh > /var/log/kylin-deploy.log
+fi
