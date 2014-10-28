@@ -7,7 +7,7 @@ RUN ln -s /usr/local/apache-maven-3.2.3/bin/mvn /usr/bin/mvn
 RUN git clone https://github.com/KylinOLAP/Kylin.git /usr/local/kylin
 RUN cd /usr/local/kylin && mvn clean install -DskipTests
 
-RUN yum install -y hbase
+RUN yum install -y hbase mysql
 
 RUN curl -s http://apache.cs.uu.nl/dist/tomcat/tomcat-7/v7.0.56/bin/apache-tomcat-7.0.56.tar.gz | tar -xz -C /usr/local/
 ENV CATALINA_HOME /usr/local/apache-tomcat-7.0.56
