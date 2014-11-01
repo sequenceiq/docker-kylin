@@ -24,4 +24,6 @@ ADD kylin-multinode.json /tmp/
 ADD wait-for-kylin.sh /tmp/
 ADD deploy.sh /usr/local/kylin/deploy.sh
 
+RUN echo 'root:kylin' | chpasswd
+
 EXPOSE 9080

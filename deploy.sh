@@ -119,7 +119,7 @@ KYLIN_ZOOKEEPER_URL=${KYLIN_ZOOKEEPER_QUORUM}:${KYLIN_ZOOKEEPER_CLIENT_PORT}:${K
 cat examples/test_case_data/kylin.properties | \
     sed -e "s,${CHECK_URL_DEFAULT},${NEW_CHECK_URL_PREFIX}${HOSTNAME}," | \
     sed -e "s,${CLI_HOSTNAME_DEFAULT},${NEW_CLI_HOSTNAME_PREFIX}${HOSTNAME}," | \
-    sed -e "s,${CLI_PASSWORD_DEFAULT},${NEW_CLI_PASSWORD_PREFIX}${rootpass}," | \
+    sed -e "s,${CLI_PASSWORD_DEFAULT},${NEW_CLI_PASSWORD_PREFIX}kylin," | \
     sed -e "s,${METADATA_URL_DEFAULT},${NEW_METADATA_URL_PREFIX}${KYLIN_ZOOKEEPER_URL}," | \
     sed -e "s,${STORAGE_URL_DEFAULT},${NEW_STORAGE_URL_PREFIX}${KYLIN_ZOOKEEPER_URL}," >  /etc/kylin/kylin.properties
 
@@ -134,7 +134,7 @@ echo ""
 # 1. generate synthetic fact table(test_kylin_fact) data and dump it into hive
 # 2. create empty cubes on these data, ready to be built
 cd $KYLIN_HOME
-#mvn test -Dtest=com.kylinolap.job.SampleCubeSetupTest -DfailIfNoTests=false
+mvn test -Dtest=com.kylinolap.job.SampleCubeSetupTest -DfailIfNoTests=false
 
 ${CATALINA_HOME}/bin/shutdown.sh || true # avoid trapping
 cd $KYLIN_HOME/server/target
