@@ -1,4 +1,11 @@
 {
+  "configurations": [
+   {
+     "hdfs-site": {
+       "dfs.permissions.enabled": "false"
+     }
+   }
+  ],
   "host_groups": [
     {
       "name": "master",
@@ -11,6 +18,12 @@
         },
         {
           "name": "HBASE_CLIENT"
+        },
+        {
+          "name": "WEBHCAT_SERVER"
+        },
+        {
+          "name": "HCAT"
         },
         {
           "name": "NAMENODE"
