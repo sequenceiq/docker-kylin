@@ -5,7 +5,8 @@ RUN curl -s http://apache.proserve.nl/maven/maven-3/3.2.3/binaries/apache-maven-
 RUN ln -s /usr/local/apache-maven-3.2.3/bin/mvn /usr/bin/mvn
 
 RUN curl -sL https://github.com/KylinOLAP/Kylin/archive/v0.6.2.tar.gz | tar -xz -C /usr/local/
-RUN cd /usr/local/Kylin-0.6.2 && mvn clean install -DskipTests
+RUN cd /usr/local && ln -s ./Kylin-0.6.2 kylin
+RUN cd /usr/local/kylin && mvn clean install -DskipTests
 
 RUN yum install -y hbase mysql
 
