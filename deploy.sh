@@ -19,7 +19,7 @@ echo "This script will help you:"
 echo "1. Check environment"
 echo "2. Build Kylin artifacts"
 echo "3. Prepare test cube related data"
-echo "4. Lauch a web service to build cube and query with (at http://localhost:9080)"
+echo "4. Lauch a web service to build cube and query with (at http://localhost:7070)"
 echo "Please make sure you're running this script on a hadoop CLI machine, and you have enough permissions."
 echo "Also, We assume you have installed: JAVA, TOMCAT, NPM and MAVEN."
 echo "[Warning] The installation may break existing tomcat applications on this CLI"
@@ -179,4 +179,4 @@ ${CATALINA_HOME}/bin/startup.sh
 
 
 echo "Kylin-Deploy Success!"
-echo "Please visit http://<your_sandbox_ip>:9080 to play with the cubes!"
+echo "Please visit http://<your_sandbox_ip>:7070 to play with the cubes!"
