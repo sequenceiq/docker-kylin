@@ -4,7 +4,7 @@ MAINTAINER SequenceIQ
 RUN curl -s http://apache.proserve.nl/maven/maven-3/3.2.3/binaries/apache-maven-3.2.3-bin.tar.gz | tar -xz -C /usr/local/
 RUN ln -s /usr/local/apache-maven-3.2.3/bin/mvn /usr/bin/mvn
 
-RUN curl -s https://github.com/KylinOLAP/Kylin/archive/v0.6.2.tar.gz | tar -xz -C /usr/local/kylin
+RUN curl -sL https://github.com/KylinOLAP/Kylin/archive/v0.6.2.tar.gz | tar -xz -C /usr/local/kylin
 RUN cd /usr/local/kylin && mvn clean install -DskipTests
 
 RUN yum install -y hbase mysql
