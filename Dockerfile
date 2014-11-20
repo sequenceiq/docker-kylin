@@ -9,7 +9,7 @@ RUN cd /usr/local/Kylin-0.6.2 && mvn clean install -DskipTests
 
 RUN yum install -y hbase mysql
 
-RUN curl -s http://apache.cs.uu.nl/dist/tomcat/tomcat-7/v7.0.56/bin/apache-tomcat-7.0.56.tar.gz | tar -xz -C /usr/local/
+RUN curl -s http://xenia.sote.hu/ftp/mirrors/www.apache.org/tomcat/tomcat-7/v7.0.57/bin/apache-tomcat-7.0.57.tar.gz | tar -xz -C /usr/local/
 ENV CATALINA_HOME /usr/local/apache-tomcat-7.0.56
 
 RUN curl -s http://nodejs.org/dist/v0.10.32/node-v0.10.32-linux-x64.tar.gz | tar -xz -C /usr/local/
