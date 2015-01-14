@@ -8,7 +8,14 @@ This is a Docker container for Kylin to help you quick start with. In order to s
 docker pull sequenceiq/kylin
 ```
 
-Once the container is pulled you are ready to start playing with Kylin. Use the following function from `ambari-functions` (make sure you source it).
+We have provided a few helper functions for your convenience.
+
+```
+wget https://raw.githubusercontent.com/sequenceiq/docker-kylin/master/ambari-functions
+source ambari-functions
+```
+
+Once the container is pulled you are ready to start playing with Kylin. Use the following functions from `ambari-functions` (make sure you source it).
 
 ```
  kylin-deploy-cluster 3
