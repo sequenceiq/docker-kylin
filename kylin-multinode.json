@@ -65,9 +65,6 @@
           "name": "HIVE_METASTORE"
         },
         {
-          "name": "GANGLIA_SERVER"
-        },
-        {
           "name": "YARN_CLIENT"
         },
         {
@@ -75,9 +72,6 @@
         },
         {
           "name": "MYSQL_SERVER"
-        },
-        {
-          "name": "GANGLIA_MONITOR"
         }
       ],
       "cardinality": "1"
@@ -108,9 +102,6 @@
         },
         {
           "name": "MAPREDUCE2_CLIENT"
-        },
-        {
-          "name": "GANGLIA_MONITOR"
         }
       ],
       "cardinality": "1"

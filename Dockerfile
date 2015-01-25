@@ -1,14 +1,15 @@
-FROM sequenceiq/ambari:1.6.0-warmup
+FROM sequenceiq/ambari:1.7.0
 MAINTAINER SequenceIQ
 
-RUN curl -s http://apache.proserve.nl/maven/maven-3/3.2.3/binaries/apache-maven-3.2.3-bin.tar.gz | tar -xz -C /usr/local/
-RUN ln -s /usr/local/apache-maven-3.2.3/bin/mvn /usr/bin/mvn
+RUN curl -s http://xenia.sote.hu/ftp/mirrors/www.apache.org/maven/maven-3/3.2.5/binaries/apache-maven-3.2.5-bin.tar.gz | tar -xz -C /usr/local/
+RUN ln -s /usr/local/apache-maven-3.2.5/bin/mvn /usr/bin/mvn
 
 RUN curl -sL https://github.com/KylinOLAP/Kylin/archive/v0.6.2.tar.gz | tar -xz -C /usr/local/
 RUN cd /usr/local && ln -s ./Kylin-0.6.2 kylin
 RUN cd /usr/local/kylin && mvn clean install -DskipTests
 
-RUN yum install -y hbase mysql
+ADD HDP.repo /etc/yum.repos.d/
+RUN yum install -y pig hbase tez hadoop snappy snappy-devel hadoop-libhdfs ambari-log4j hive hive-hcatalog hive-webhcat webhcat-tar-hive webhcat-tar-pig mysql-connector-java mysql-server
 
 RUN curl -s http://xenia.sote.hu/ftp/mirrors/www.apache.org/tomcat/tomcat-7/v7.0.57/bin/apache-tomcat-7.0.57.tar.gz | tar -xz -C /usr/local/
 ENV CATALINA_HOME /usr/local/apache-tomcat-7.0.57
