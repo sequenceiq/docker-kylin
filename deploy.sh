@@ -100,6 +100,8 @@ source /tmp/kylin_retrieve.sh
 cd $KYLIN_HOME
 mkdir -p /etc/kylin
 
+CLI_RUN_AS_REMOTE_TRUE="kylin.job.run.as.remote.cmd=true"
+CLI_RUN_AS_REMOTE_FALSE="kylin.job.run.as.remote.cmd=false"
 CLI_HOSTNAME_DEFAULT="kylin.job.remote.cli.hostname=sandbox.hortonworks.com"
 CLI_PASSWORD_DEFAULT="kylin.job.remote.cli.password=hadoop"
 METADATA_URL_DEFAULT="kylin.metadata.url=kylin_metadata_qa@hbase:sandbox.hortonworks.com:2181:/hbase-unsecure"
@@ -116,7 +118,8 @@ KYLIN_ZOOKEEPER_URL=${KYLIN_ZOOKEEPER_QUORUM}:${KYLIN_ZOOKEEPER_CLIENT_PORT}:${K
 
 
 #deploy kylin.properties to /etc/kylin
-cat examples/test_case_data/kylin.properties | \
+cat examples/test_case_data/sandbox/kylin.properties | \
+    sed -e "s,${CLI_RUN_AS_REMOTE_TRUE},${CLI_RUN_AS_REMOTE_FALSE}," | \
     sed -e "s,${CHECK_URL_DEFAULT},${NEW_CHECK_URL_PREFIX}${HOSTNAME}," | \
     sed -e "s,${CLI_HOSTNAME_DEFAULT},${NEW_CLI_HOSTNAME_PREFIX}${HOSTNAME}," | \
     sed -e "s,${CLI_PASSWORD_DEFAULT},${NEW_CLI_PASSWORD_PREFIX}kylin," | \
