@@ -23,7 +23,7 @@ Once the container is pulled you are ready to start playing with Kylin. Use the 
 
 Once the container is up and running you can reach out to the Kylin UI. First you will need to find the IP address of the container:
 ```
-docker inspect -f '{{ .NetworkSettings.IPAddress }}' amb0 )
+docker inspect -f '{{ .NetworkSettings.IPAddress }}' amb0
 ```
 
 Once you know the IP address you can use the Kylin UI:
