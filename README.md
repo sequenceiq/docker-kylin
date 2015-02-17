@@ -20,6 +20,8 @@ Once the container is pulled you are ready to start playing with Kylin. Use the 
 ```
  kylin-deploy-cluster 3
 ```
+(This will start a hadoop cluster with 3 ndoes; Kylin will run in the first node 'amb0'; It is okay to start the cluster with 1 node)
+
 
 Once the container is up and running you can reach out to the Kylin UI. First you will need to find the IP address of the container:
 ```
@@ -28,4 +30,6 @@ docker inspect -f '{{ .NetworkSettings.IPAddress }}' amb0
 
 Once you know the IP address you can use the Kylin UI:
 
-`http://<container_ip>:7070`.
+`http://<container_ip>:7070` (username: ADMIN, password: KYLIN, select a sample project like "default" from the project list).
+
+There are a couple of sample Cubes have been defined for you, but haven't been built; Select a Cube and then click "Action -> Build" to trigger the hadoop jobs; track the job progress in the "Jobs" tab until it finished successfully; Once the Cube's status is changed to "READY", you can write some SQL queries and test the cube.  
