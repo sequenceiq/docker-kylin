@@ -11,6 +11,9 @@
       "name": "master",
       "components": [
         {
+          "name": "APP_TIMELINE_SERVER"
+        },
+        {
           "name": "HISTORYSERVER"
         },
         {
