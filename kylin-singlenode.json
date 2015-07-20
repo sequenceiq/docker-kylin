@@ -80,6 +80,6 @@
   "Blueprints": {
     "blueprint_name": "hdp-singlenode-kylin",
     "stack_name": "HDP",
-    "stack_version": "2.1"
+    "stack_version": "2.2"
   }
 }

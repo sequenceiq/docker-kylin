@@ -4,8 +4,8 @@ MAINTAINER SequenceIQ
 RUN curl -s http://xenia.sote.hu/ftp/mirrors/www.apache.org/maven/maven-3/3.2.5/binaries/apache-maven-3.2.5-bin.tar.gz | tar -xz -C /usr/local/
 RUN ln -s /usr/local/apache-maven-3.2.5/bin/mvn /usr/bin/mvn
 
-RUN curl -sL https://github.com/apache/incubator-kylin/archive/v0.6.4.tar.gz | tar -xz -C /usr/local/
-RUN cd /usr/local && ln -s ./incubator-kylin-0.6.4 kylin
+RUN curl -sL https://kylin.incubator.apache.org/download/kylin-0.7.2-incubating.tar.gz | tar -xz -C /usr/local/
+RUN cd /usr/local && ln -s ./kylin-0.7.2-incubating kylin
 RUN cd /usr/local/kylin && mvn clean install -DskipTests
 
 ADD HDP.repo /etc/yum.repos.d/
