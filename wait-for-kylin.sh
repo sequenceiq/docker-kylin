@@ -11,7 +11,7 @@ debug() {
 }
 
 get-server-state() {
-  curl -s -o /dev/null -w "%{http_code}" $AMBARISERVER_PORT_7070_TCP_ADDR:7070
+  curl -s -o /dev/null -w "%{http_code}" $AMBARISERVER_PORT_7070_TCP_ADDR:7070/kylin
 }
 
 debug waits for kylin to start on: $KYLIN_HOST

@@ -89,6 +89,8 @@ cd $KYLIN_HOME
 echo "Create sample cube..."
 source ./bin/sample.sh
 
+
+echo "Starting kylin server..."
 source ./bin/kylin.sh start
 
 echo "Kylin server started"
