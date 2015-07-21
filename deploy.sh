@@ -27,11 +27,11 @@ echo "Kylin home folder path is $KYLIN_HOME"
 cd $KYLIN_HOME
 
 echo "Create sample cube..."
-sh ./bin/sample.sh >> /tmp/kylin-sample.log 2>> /tmp/kylin-sample.log
+sh ./bin/sample.sh
 
 
 echo "Starting kylin server..."
-sh ./bin/kylin.sh start >> /tmp/kylin-start.log 2>> /tmp/kylin-start.log
+sh ./bin/kylin.sh start
 
 echo "Kylin-Deploy Success!"
 echo "Please visit http://<your_sandbox_ip>:7070/kylin to play with the cubes!"

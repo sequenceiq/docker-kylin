@@ -5,7 +5,6 @@ RUN curl -sL https://kylin.incubator.apache.org/download/kylin-0.7.2-incubating.
 RUN cd /usr/local && ln -s ./kylin-0.7.2-incubating kylin
 ENV KYLIN_HOME=/usr/local/kylin
 
-ADD HDP.repo /etc/yum.repos.d/
 RUN yum install -y pig hbase tez hadoop snappy snappy-devel hadoop-libhdfs ambari-log4j hive hive-hcatalog hive-webhcat webhcat-tar-hive webhcat-tar-pig mysql-connector-java mysql-server
 
 ADD serf /usr/local/serf
@@ -15,7 +14,5 @@ ADD kylin-singlenode.json /tmp/
 ADD kylin-multinode.json /tmp/
 ADD wait-for-kylin.sh /tmp/
 ADD deploy.sh /usr/local/kylin/deploy.sh
-
-RUN echo 'root:kylin' | chpasswd
 
 EXPOSE 7070
