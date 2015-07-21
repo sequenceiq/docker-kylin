@@ -15,7 +15,7 @@ trap 'error ${LINENO} ${?}' ERR
 
 echo ""
 echo "Welcome to use Kylin-Deploy script"
-echo "This script will help you:"
+echo "This script will:"
 echo "1. Check environment"
 echo "2. Prepare sample cube related data"
 echo "3. Lauch a web service to build cube and query with (at http://localhost:7070/kylin)"
@@ -23,19 +23,15 @@ echo "Please make sure you're running this script on a hadoop CLI machine, and y
 echo ""
 
 
-KYLIN_HOME=/usr/local/kylin
 echo "Kylin home folder path is $KYLIN_HOME"
 cd $KYLIN_HOME
 
-
 echo "Create sample cube..."
-source ./bin/sample.sh
+sh ./bin/sample.sh >> /tmp/kylin-sample.log 2>> /tmp/kylin-sample.log
 
 
 echo "Starting kylin server..."
-source ./bin/kylin.sh start
-
-echo "Kylin server started"
+sh ./bin/kylin.sh start >> /tmp/kylin-start.log 2>> /tmp/kylin-start.log
 
 echo "Kylin-Deploy Success!"
 echo "Please visit http://<your_sandbox_ip>:7070/kylin to play with the cubes!"

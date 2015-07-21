@@ -3,6 +3,7 @@ MAINTAINER SequenceIQ
 
 RUN curl -sL https://kylin.incubator.apache.org/download/kylin-0.7.2-incubating.tar.gz | tar -xz -C /usr/local/
 RUN cd /usr/local && ln -s ./kylin-0.7.2-incubating kylin
+ENV KYLIN_HOME=/usr/local/kylin
 
 ADD HDP.repo /etc/yum.repos.d/
 RUN yum install -y pig hbase tez hadoop snappy snappy-devel hadoop-libhdfs ambari-log4j hive hive-hcatalog hive-webhcat webhcat-tar-hive webhcat-tar-pig mysql-connector-java mysql-server
