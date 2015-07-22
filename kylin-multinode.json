@@ -3,7 +3,11 @@
    {
      "hdfs-site": {
        "dfs.permissions.enabled": "false"
-     }
+     },
+     "hive-site": {
+        "javax.jdo.option.ConnectionUserName": "hive",
+        "javax.jdo.option.ConnectionPassword": "hive"
+      }
    }
   ],
   "host_groups": [
