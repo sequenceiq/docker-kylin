@@ -11,7 +11,7 @@ debug() {
 }
 
 get-server-state() {
-  curl -s -o /dev/null -w "%{http_code}" $AMBARISERVER_PORT_7070_TCP_ADDR:7070/kylin
+  curl -s -o /dev/null -w "%{http_code}" $AMBARISERVER_PORT_7070_TCP_ADDR:7070/kylin/index.html
 }
 
 debug waits for kylin to start on: $KYLIN_HOST
@@ -20,4 +20,4 @@ while ! get-server-state | grep 200 &>/dev/null ; do
   sleep $SLEEP
 done
 [ $DEBUG -gt 0 ] && echo
-debug kylin web started: $KYLIN_HOST:7070
+debug kylin web started: $KYLIN_HOST:7070/kylin

@@ -23,6 +23,9 @@ echo "Please make sure you're running this script on a hadoop CLI machine, and y
 echo ""
 
 
+echo "Create /user/root and /kylin on HDFS..."
+runuser -l hdfs -c "hadoop fs -mkdir /user/root && hadoop fs -chown root:hdfs /user/root && hadoop fs -mkdir /kylin"
+
 echo "Kylin home folder path is $KYLIN_HOME"
 cd $KYLIN_HOME
 
